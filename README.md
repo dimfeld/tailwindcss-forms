@@ -2,6 +2,10 @@
 
 A plugin that provides a basic reset for form styles that makes form elements easy to override with utilities.
 
+This fork uses the new Tailwind 2.0 styles, but the old-style `form-*` class names
+that `@tailwindcss/custom-forms` used, because the new styles were interfering with legacy
+non-Tailwind sections of our web application at work.
+
 ## Installation
 
 > Note that @tailwindcss/forms is designed for Tailwind CSS v2.0.
