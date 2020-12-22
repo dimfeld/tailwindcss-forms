@@ -7,21 +7,9 @@ const { colors, spacing, borderWidth, borderRadius, outline } = defaultTheme
 const forms = plugin(function ({ addBase, theme }) {
   addBase({
     [`
-      [type='text'],
-      [type='email'],
-      [type='url'],
-      [type='password'],
-      [type='number'],
-      [type='date'],
-      [type='datetime-local'],
-      [type='month'],
-      [type='search'],
-      [type='tel'],
-      [type='time'],
-      [type='week'],
-      [multiple],
-      textarea,
-      select
+      .form-input,
+      .form-textarea,
+      .form-select
     `]: {
       appearance: 'none',
       'background-color': '#fff',
@@ -48,7 +36,7 @@ const forms = plugin(function ({ addBase, theme }) {
       },
     },
 
-    'input::placeholder, textarea::placeholder': {
+    '.form-input::placeholder, .form-textarea::placeholder': {
       color: theme('colors.gray.500', colors.gray[500]),
       opacity: '1',
     },
@@ -64,7 +52,7 @@ const forms = plugin(function ({ addBase, theme }) {
       'min-height': '1.5em',
     },
 
-    select: {
+    '.form-select': {
       'background-image': `url("${svgToDataUri(
         `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path stroke="${theme(
           'colors.gray.500',
@@ -78,7 +66,7 @@ const forms = plugin(function ({ addBase, theme }) {
       'color-adjust': `exact`,
     },
 
-    '[multiple]': {
+    '.form-select[multiple]': {
       'background-image': 'initial',
       'background-position': 'initial',
       'background-repeat': 'unset',
@@ -88,8 +76,8 @@ const forms = plugin(function ({ addBase, theme }) {
     },
 
     [`
-      [type='checkbox'],
-      [type='radio']
+      .form-checkbox,
+      .form-radio
     `]: {
       appearance: 'none',
       padding: '0',
@@ -107,17 +95,17 @@ const forms = plugin(function ({ addBase, theme }) {
       'border-width': borderWidth['DEFAULT'],
     },
 
-    [`[type='checkbox']`]: {
+    [`.form-checkbox`]: {
       'border-radius': borderRadius['none'],
     },
 
-    [`[type='radio']`]: {
+    [`.form-radio`]: {
       'border-radius': '100%',
     },
 
     [`
-      [type='checkbox']:focus,
-      [type='radio']:focus
+      .form-checkbox:focus,
+      .form-radio:focus
     `]: {
       outline: outline.none[0],
       'outline-offset': outline.none[1],
@@ -132,8 +120,8 @@ const forms = plugin(function ({ addBase, theme }) {
     },
 
     [`
-      [type='checkbox']:checked,
-      [type='radio']:checked
+      .form-checkbox:checked,
+      .form-radio:checked
     `]: {
       'border-color': `transparent`,
       'background-color': `currentColor`,
@@ -142,29 +130,29 @@ const forms = plugin(function ({ addBase, theme }) {
       'background-repeat': `no-repeat`,
     },
 
-    [`[type='checkbox']:checked`]: {
+    [`.form-checkbox:checked`]: {
       'background-image': `url("${svgToDataUri(
         `<svg viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"/></svg>`
       )}")`,
     },
 
-    [`[type='radio']:checked`]: {
+    [`.form-radio:checked`]: {
       'background-image': `url("${svgToDataUri(
         `<svg viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`
       )}")`,
     },
 
     [`
-      [type='checkbox']:checked:hover,
-      [type='checkbox']:checked:focus,
-      [type='radio']:checked:hover,
-      [type='radio']:checked:focus
+      .form-checkbox:checked:hover,
+      .form-checkbox:checked:focus,
+      .form-radio:checked:hover,
+      .form-radio:checked:focus
     `]: {
       'border-color': 'transparent',
       'background-color': 'currentColor',
     },
 
-    [`[type='checkbox']:indeterminate`]: {
+    [`.form-checkbox:indeterminate`]: {
       'background-image': `url("${svgToDataUri(
         `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h8"/></svg>`
       )}")`,
@@ -176,14 +164,14 @@ const forms = plugin(function ({ addBase, theme }) {
     },
 
     [`
-      [type='checkbox']:indeterminate:hover,
-      [type='checkbox']:indeterminate:focus
+      .form-checkbox:indeterminate:hover,
+      .form-checkbox:indeterminate:focus
     `]: {
       'border-color': 'transparent',
       'background-color': 'currentColor',
     },
 
-    [`[type='file']`]: {
+    [`.form-input[type='file']`]: {
       background: 'unset',
       'border-color': 'inherit',
       'border-width': '0',
@@ -193,7 +181,7 @@ const forms = plugin(function ({ addBase, theme }) {
       'line-height': 'inherit',
     },
 
-    [`[type='file']:focus`]: {
+    [`input[type='file']:focus`]: {
       outline: `1px solid ButtonText`,
       outline: `1px auto -webkit-focus-ring-color`,
     },
